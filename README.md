@@ -18,22 +18,6 @@ The goal of these analyses is to determine whether exposure to a creative, inter
 
 ---
 
-## Data Description
-
-The dataset used in the analyses includes the following fields:
-
-- **auction_id:** Unique impression identifier.
-- **experiment:** Group assignment, either **control** (dummy ad) or **exposed** (creative ad).
-- **date:** Date of impression (YYYY-MM-DD).
-- **hour:** Hour of day (in HH format).
-- **device_make:** Device manufacturer (e.g., Samsung).
-- **platform_os:** Operating system identifier.
-- **browser:** Browser used.
-- **yes:** Binary indicator (1/0) if the respondent answered "Yes" to brand awareness.
-- **no:** Binary indicator (1/0) if the respondent answered "No".
-
----
-
 ## Prerequisites & Installation
 
 The notebooks were developed using Python 3 and require several libraries. You can install the necessary dependencies using `pip`:
