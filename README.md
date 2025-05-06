@@ -1,73 +1,68 @@
 # AB Hypothesis Testing Ad Campaign Performance
 
-This repository contains a series of Jupyter notebooks that provide a comprehensive analysis of an online advertising campaign aimed at increasing brand awareness. Two distinct approaches are presented: classical hypothesis testing (including sequential analysis) and a machine learning–based evaluation of A/B testing results.
+An end-to-end **statistical & ML evaluation** pipeline for an online advertising A/B campaign, combining classical & sequential hypothesis testing with a machine learning–based analysis.
 
 ---
 
-## **Objective**
+## Repository Structure
 
-The goal of these analyses is to determine whether exposure to a creative, interactive advertisement (the **exposed** group) leads to a statistically significant improvement in brand awareness—measured by the "Yes" response—to the question, "Do you know the brand SmartAd?" compared to a dummy advertisement (the **control** group).
-
-**Two main approaches are explored:**
-
-- **Classic and Sequential A/B Testing**  
-  This approach uses standard hypothesis testing methods, including a one-sided two-sample z-test for proportions, and extends to sequential analysis with alpha spending adjustments. It provides insight into both the final aggregated data and the evolution of the test statistic over time.
-
-- **Machine Learning-Based A/B Testing Analysis**  
-  Here, the A/B testing problem is reframed as a supervised classification task. Multiple models—including Logistic Regression, Decision Trees, XGBoost, Random Forests, Bagging, and Stacking classifiers—are tuned and evaluated using cross-validation. The analysis not only measures overall predictive performance but also examines feature importances to assess the impact of the experimental treatment relative to other factors like time of day, browser type, and device characteristics.
-
----
-
-## Prerequisites & Installation
-
-The notebooks were developed using Python 3 and require several libraries. You can install the necessary dependencies using `pip`:
-
-```bash
-pip install numpy pandas scipy statsmodels plotly scikit-learn xgboost matplotlib seaborn
-```
-
-Alternatively, you can use the provided requirements.txt file (if available) by running:
-
-```bash
-pip install -r requirements.txt
+```plain
+.
+├── data/
+│   └── AdSmartABdata.csv
+├── notebooks/
+│   ├── AB_Hypothesis_Testing_Ad_Campaign_Performance_(Classic_and_Sequential_AB_Testing_Analysis).ipynb
+│   └── AB_Hypothesis_Testing_Ad_Campaign_Performance_(Machine_Learning_Analysis).ipynb
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-## How to Run the Notebooks
+## Quick Start
 
-1. **Clone the repository:**
+1. **Clone the repository**
+
    ```bash
-   git clone https://github.com/<your-username>/AB-Hypothesis-Testing-Ad-campaign-performance.git
-   cd AB-Hypothesis-Testing-Ad-campaign-performance
-    ```
+   git clone https://github.com/your-username/AB-Hypothesis-Testing-Ad-Campaign.git
+   cd AB-Hypothesis-Testing-Ad-Campaign
+   ```
 
-2. **Launch Jupyter Notebook or JupyterLab:**
-    ```bash
-   jupyter notebook
-    ```
-    or
-    ```bash
-   jupyter lab
-    ```
+2. **(Optional) Create and activate a virtual environment**
 
-3. **Open and Run the Notebooks**
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate    # Windows: .venv\Scripts\activate
+   ```
 
-    **Start with Classic_Sequential_AB_Testing.ipynb**  
-    Review the hypothesis testing analysis contained within this notebook.
+3. **Install dependencies**
 
-    **Then proceed to ML_AB_Testing.ipynb**  
-    Explore the machine learning–based approach presented in this notebook.
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Launch Jupyter Lab or Notebook**
+
+   ```bash
+   jupyter lab  # or jupyter notebook
+   ```
+
+5. **Execute the notebooks**
+
+---
+
+## Notebook Overviews
+
+**Classic & Sequential A/B Testing**
+
+It examines whether the interactive ad generated a higher “Yes” response compared to the control. The analysis begins with a one-sided two-sample z-test for proportions, followed by sequential monitoring with alpha spending. Results include final p-values, confidence intervals, and a visual of statistical boundaries over time.
+
+**Machine Learning–Based Analysis**
+
+It treats the A/B test as a supervised learning task. Data preparation and model training (logistic regression, decision tree, random forest, XGBoost, bagging, and stacking) are performed, with cross-validation AUC, precision, recall metrics reported. Feature importance rankings reveal the factors most strongly associated with brand awareness.
 
 ---
 
 ## Conclusions
 
-### Classic and Sequential Testing
-The classical hypothesis testing approach indicates that, while the exposed group shows a marginally higher proportion of "Yes" responses, the difference is not statistically significant. The sequential analysis further supports this conclusion by showing that the cumulative z-statistic never crosses the predefined significance boundaries.
-
-### Machine Learning Approach
-Predictive models exhibit modest performance (AUC around 0.53–0.54), suggesting that the current feature set does not strongly predict brand awareness. Although the experimental condition is among the important features, factors such as time of day and browser type have a more pronounced effect.
-
-Overall, both analytical approaches suggest that there is insufficient evidence to claim a significant improvement in brand awareness due to the ad exposure in this experiment.
-
+The classical and sequential testing workflow indicates no statistically significant lift in “Yes” responses; the z-statistic remains within non-significant bounds throughout the monitoring period. Predictive performance in the machine learning approach is modest (AUC approximately 0.53–0.54), with contextual variables such as time of day and browser type exerting greater influence than ad exposure. These findings suggest that the interactive advertisement did not produce a meaningful increase in brand awareness in this experiment.
