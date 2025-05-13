@@ -51,7 +51,7 @@ An end-to-end **statistical & ML evaluation** pipeline for an online advertising
 
 ---
 
-## Notebook Overviews
+## Notebooks
 
 **Classic & Sequential A/B Testing**
 
